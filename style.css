@@ -1108,64 +1108,172 @@ p {
 
 
 /* =========================================================
-   VIHA RIHA — LOOKBOOK
+   LOOKBOOK
 ========================================================= */
 
 .lookbook {
-    padding: 65px 0 85px;
+    padding: 70px 0 90px;
 }
 
 
-/* ================= HEADING ================= */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .lookbook-heading {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 50px;
-    margin-bottom: 32px;
+
+    gap: 60px;
+
+    margin-bottom: 38px;
 }
 
 .lookbook-heading h2 {
-    margin-top: 12px;
+    margin-top: 14px;
     margin-bottom: 0;
 }
 
 .lookbook-heading > p {
-    max-width: 370px;
-    margin: 0 0 3px;
+    max-width: 380px;
+
+    margin: 0 0 4px;
+
     color: var(--text);
+
     font-size: 13px;
-    line-height: 1.75;
+    line-height: 1.8;
 }
 
 
-/* ================= MAIN GRID ================= */
+/* =========================================================
+   COMMON GRID
+========================================================= */
 
 .lookbook-grid {
+    width: 100%;
+
     display: grid;
 
-    grid-template-columns: 1.15fr 0.85fr 0.85fr;
-    grid-template-rows: 220px 220px 180px;
-
-    gap: 12px;
+    gap: 14px;
 }
 
 
-/* ================= CARDS ================= */
+/* =========================================================
+   GRID ONE
+========================================================= */
+
+/*
+    
+    ┌───────────────────┬──────────────┐
+    │                   │              │
+    │                   │      02      │
+    │        01         ├──────────────┤
+    │                   │              │
+    │                   │      03      │
+    │                   │              │
+    └───────────────────┴──────────────┘
+
+*/
+
+.grid-one {
+
+    grid-template-columns:
+        1.35fr
+        0.85fr;
+
+    grid-template-rows:
+        230px
+        230px;
+
+    margin-bottom: 14px;
+}
+
+
+/* FEATURE */
+
+.grid-one .look-feature {
+
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+
+/* 02 */
+
+.grid-one .look-item:nth-child(2) {
+
+    grid-column: 2;
+    grid-row: 1;
+}
+
+
+/* 03 */
+
+.grid-one .look-item:nth-child(3) {
+
+    grid-column: 2;
+    grid-row: 2;
+}
+
+
+/* =========================================================
+   GRID TWO
+========================================================= */
+
+/*
+
+    ┌────────────────────┬────────────────────┐
+    │                    │                    │
+    │        04          │         05         │
+    │                    │                    │
+    ├────────────────────┼────────────────────┤
+    │        06          │         07         │
+    │                    │                    │
+    └────────────────────┴────────────────────┘
+
+*/
+
+.grid-two {
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    grid-template-rows:
+        250px
+        190px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
 
 .look-item {
+
     position: relative;
-    overflow: hidden;
 
     min-width: 0;
     min-height: 0;
 
-    border-radius: 16px;
+    overflow: hidden;
+
+    border-radius: 18px;
+
     background: var(--cream-dark);
+
+    isolation: isolate;
 }
 
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
 .look-item img {
+
     display: block;
 
     width: 100%;
@@ -1174,173 +1282,174 @@ p {
     object-fit: cover;
 
     transition:
-        transform .65s cubic-bezier(.2,.7,.2,1);
+        transform .7s cubic-bezier(.2,.7,.2,1);
 }
 
+
+/* HOVER */
+
 .look-item:hover img {
+
     transform: scale(1.045);
 }
 
 
-/* ================= LARGE IMAGE ================= */
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
 
-.look-large {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-}
+.look-item::after {
 
-
-/* ================= IMAGE POSITIONS ================= */
-
-/*
-    DESKTOP
-
-    ┌───────────────┬───────────┬───────────┐
-    │               │    02     │    03     │
-    │      01       │───────────│───────────│
-    │               │    04     │    05     │
-    ├───────────────┴───────────┴───────────┤
-    │      06             │       07       │
-    └─────────────────────┴─────────────────┘
-*/
-
-.lookbook-grid .look-item:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.lookbook-grid .look-item:nth-child(3) {
-    grid-column: 3;
-    grid-row: 1;
-}
-
-.lookbook-grid .look-item:nth-child(4) {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-.lookbook-grid .look-item:nth-child(5) {
-    grid-column: 3;
-    grid-row: 2;
-}
-
-.lookbook-grid .look-item:nth-child(6) {
-    grid-column: 1 / span 2;
-    grid-row: 3;
-}
-
-.lookbook-grid .look-item:nth-child(7) {
-    grid-column: 3;
-    grid-row: 3;
-}
-
-
-/* ================= IMAGE TREATMENT ================= */
-
-/* Slightly soften the images */
-
-.look-item::before {
     content: "";
 
     position: absolute;
+
     inset: 0;
 
     z-index: 1;
+
     pointer-events: none;
 
     background:
         linear-gradient(
             to top,
-            rgba(0,0,0,.24),
-            transparent 45%
+            rgba(0, 0, 0, .24),
+            transparent 50%
         );
 }
 
 
-/* ================= CAPTION ================= */
+/* =========================================================
+   CAPTION
+========================================================= */
 
 .look-caption {
+
     position: absolute;
 
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
+    left: 13px;
+    right: 13px;
+    bottom: 13px;
 
     z-index: 2;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    padding: 9px 12px;
+    gap: 15px;
 
-    border-radius: 9px;
+    padding: 10px 13px;
 
-    background: rgba(255,255,255,.9);
+    border-radius: 10px;
 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background:
+        rgba(255, 255, 255, .91);
 
-    font-size: 10px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
     transition:
         transform .3s ease,
         background .3s ease;
 }
 
+
+/* caption hover */
+
 .look-item:hover .look-caption {
-    transform: translateY(-2px);
-    background: rgba(255,255,255,.95);
+
+    transform: translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, .96);
 }
 
+
+/* number */
+
 .look-caption span {
+
+    flex-shrink: 0;
+
     color: var(--rose);
+
     font-size: 9px;
+
     font-weight: 700;
+
     letter-spacing: .08em;
 }
 
+
+/* title */
+
 .look-caption strong {
+
     color: var(--text);
+
     font-size: 10px;
+
     font-weight: 600;
+
+    text-align: right;
 }
 
 
-/* ================= BOTTOM ================= */
+/* =========================================================
+   BOTTOM
+========================================================= */
 
 .lookbook-bottom {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    margin-top: 20px;
+    gap: 30px;
+
+    margin-top: 24px;
 }
 
+
 .lookbook-bottom p {
+
     margin: 0;
 
     color: var(--muted);
+
     font-size: 12px;
 }
 
+
 .lookbook-bottom a {
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 6px;
 
     color: var(--rose);
 
     font-size: 12px;
+
     font-weight: 700;
 
     text-decoration: none;
 
-    transition: gap .3s ease;
+    transition:
+        gap .3s ease;
 }
 
+
 .lookbook-bottom a:hover {
-    gap: 9px;
+
+    gap: 10px;
 }
 
 
@@ -1348,67 +1457,47 @@ p {
    TABLET
 ========================================================= */
 
-@media (max-width: 850px) {
+@media (max-width: 800px) {
+
+    .lookbook {
+
+        padding: 60px 0 75px;
+    }
+
 
     .lookbook-heading {
+
         gap: 30px;
     }
 
-    .lookbook-grid {
-        grid-template-columns: 1fr 1fr;
+
+    /* GRID ONE */
+
+    .grid-one {
+
+        grid-template-columns:
+            1.25fr
+            1fr;
+
         grid-template-rows:
-            300px
-            190px
-            190px
-            190px;
+            210px
+            210px;
     }
 
-    /*
-        ┌─────────────────────┐
-        │         01          │
-        ├──────────┬──────────┤
-        │    02    │    03    │
-        ├──────────┼──────────┤
-        │    04    │    05    │
-        ├──────────┼──────────┤
-        │    06    │    07    │
-        └──────────┴──────────┘
-    */
 
-    .look-large {
-        grid-column: 1 / span 2;
-        grid-row: 1;
+    /* GRID TWO */
+
+    .grid-two {
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+        grid-template-rows:
+            210px
+            170px;
     }
 
-    .lookbook-grid .look-item:nth-child(2) {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .lookbook-grid .look-item:nth-child(3) {
-        grid-column: 2;
-        grid-row: 2;
-    }
-
-    .lookbook-grid .look-item:nth-child(4) {
-        grid-column: 1;
-        grid-row: 3;
-    }
-
-    .lookbook-grid .look-item:nth-child(5) {
-        grid-column: 2;
-        grid-row: 3;
-    }
-
-    .lookbook-grid .look-item:nth-child(6) {
-        grid-column: 1;
-        grid-row: 4;
-    }
-
-    .lookbook-grid .look-item:nth-child(7) {
-        grid-column: 2;
-        grid-row: 4;
-    }
 }
 
 
@@ -1419,84 +1508,118 @@ p {
 @media (max-width: 600px) {
 
     .lookbook {
+
         padding: 50px 0 65px;
     }
 
+
+    /* HEADER */
+
     .lookbook-heading {
+
         display: block;
+
         margin-bottom: 25px;
     }
 
-    .lookbook-heading > p {
-        max-width: 100%;
-        margin-top: 14px;
-        font-size: 12px;
+
+    .lookbook-heading h2 {
+
+        margin-top: 10px;
     }
 
 
-    /* 
-       IMPORTANT:
-       Keep mobile proportions SHORT and wide.
-       Don't make every image a giant vertical card.
-    */
+    .lookbook-heading > p {
 
-    .lookbook-grid {
-        grid-template-columns: 1fr 1fr;
+        max-width: 100%;
+
+        margin-top: 14px;
+
+        font-size: 12px;
+
+        line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       GRID ONE
+
+       ┌───────────────────────┐
+       │                       │
+       │          01           │
+       │                       │
+       ├───────────┬───────────┤
+       │    02     │    03     │
+       └───────────┴───────────┘
+    ===================================================== */
+
+    .grid-one {
+
+        grid-template-columns:
+            1fr
+            1fr;
 
         grid-template-rows:
-            235px
-            150px
-            150px
-            150px;
+            260px
+            155px;
 
         gap: 8px;
+
+        margin-bottom: 8px;
     }
 
 
-    /* Hero */
+    .grid-one .look-feature {
 
-    .look-large {
         grid-column: 1 / span 2;
         grid-row: 1;
     }
 
 
-    /* Remaining cards */
+    .grid-one .look-item:nth-child(2) {
 
-    .lookbook-grid .look-item:nth-child(2) {
         grid-column: 1;
         grid-row: 2;
     }
 
-    .lookbook-grid .look-item:nth-child(3) {
+
+    .grid-one .look-item:nth-child(3) {
+
         grid-column: 2;
         grid-row: 2;
     }
 
-    .lookbook-grid .look-item:nth-child(4) {
-        grid-column: 1;
-        grid-row: 3;
+
+    /* =====================================================
+       GRID TWO
+
+       ┌──────────────┬──────────────┐
+       │      04      │      05      │
+       ├──────────────┼──────────────┤
+       │      06      │      07      │
+       └──────────────┴──────────────┘
+    ===================================================== */
+
+    .grid-two {
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+        grid-template-rows:
+            175px
+            175px;
+
+        gap: 8px;
     }
 
-    .lookbook-grid .look-item:nth-child(5) {
-        grid-column: 2;
-        grid-row: 3;
-    }
 
-    .lookbook-grid .look-item:nth-child(6) {
-        grid-column: 1;
-        grid-row: 4;
-    }
-
-    .lookbook-grid .look-item:nth-child(7) {
-        grid-column: 2;
-        grid-row: 4;
-    }
-
-
-    /* Captions */
+    /* =====================================================
+       CAPTIONS
+    ===================================================== */
 
     .look-caption {
+
         left: 7px;
         right: 7px;
         bottom: 7px;
@@ -1506,161 +1629,60 @@ p {
         border-radius: 8px;
     }
 
+
     .look-caption span {
+
         font-size: 8px;
     }
+
 
     .look-caption strong {
+
         font-size: 8px;
     }
 
 
-    /* Bottom */
+    /* =====================================================
+       BOTTOM
+    ===================================================== */
 
     .lookbook-bottom {
-        align-items: flex-start;
+
         flex-direction: column;
 
+        align-items: flex-start;
+
         gap: 12px;
+
+        margin-top: 20px;
     }
+
 }
 
 
 /* =========================================================
-   VERY SMALL PHONES
+   SMALL PHONES
 ========================================================= */
 
 @media (max-width: 380px) {
 
-    .lookbook-grid {
+    .grid-one {
+
         grid-template-rows:
-            215px
-            135px
-            135px
-            135px;
-
-        gap: 7px;
+            235px
+            140px;
     }
-}
 
-/* ================= CUSTOM ================= */
 
-.custom {
+    .grid-two {
 
-    width: 100%;
-
-    padding: 70px max(55px, calc((100vw - 1320px) / 2));
-
-    background: var(--wine);
-
-    color: white;
+        grid-template-rows:
+            155px
+            155px;
+    }
 
 }
-
-
-.custom-inner {
-
-    max-width: var(--container);
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr .72fr;
-
-    gap: 80px;
-
-    align-items: center;
-
-}
-
-
-.custom-copy {
-
-    max-width: 680px;
-
-}
-
-
-.custom .section-label {
-
-    color: #e7a7b5;
-
-}
-
-
-.custom h2 {
-
-    margin-top: 18px;
-
-}
-
-
-.custom h2 em {
-
-    color: #d990a3;
-
-    display: block;
-
-}
-
-
-.custom-copy > p:not(.section-label) {
-
-    margin-top: 27px;
-
-    color: rgba(255,255,255,.7);
-
-    max-width: 600px;
-
-    font-size: 15px;
-
-}
-
-
-.btn-light {
-
-    background: white;
-
-    color: var(--wine);
-
-    margin-top: 28px;
-
-}
-
-
-.btn-light:hover {
-
-    background: #f5e6e1;
-
-}
-
-
-.custom-image {
-
-    height: 430px;
-
-    padding: 9px;
-
-    background: rgba(255,255,255,.12);
-
-    border-radius: 180px 180px 20px 20px;
-
-}
-
-
-.custom-image img {
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    border-radius: 175px 175px 13px 13px;
-
-}
-
-
+   
 
 /* ================= CLASSES ================= */
 
